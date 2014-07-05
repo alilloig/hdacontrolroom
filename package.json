@@ -1,0 +1,29 @@
+{
+    "name" : "Sistema de telemonitorización del HDA", 
+    "description" : "Control domótico X10 mediante inferfaz web",
+    "keywords" : ["HDA", "X10", "WebSockets", "Accesibility"],
+    "version" : "1",
+    "author" : {
+        "name" : "Álvaro Lillo Igualada",
+        "email" : "alilloig@gmail.com"
+    },
+    "config" : {
+        "foo" : "bar"
+    },
+    "main" : "somename", 
+    "bin" : { "somebin" : "./app.js" }, 
+    "scripts" : { "test" : "tap test/" },
+    "repository" : {
+        "type" : "git",
+        "url" : "http://github.com/substack/node-optimist.git"
+    },
+    "dependencies" : { 
+        "somedep" : "~0.7.2"
+    },
+    "licenses" : [
+        {
+            "type" : "MIT",
+            "url" : "http://www.opensource.org/licenses/mit-license.php"
+        }
+    ]
+}
