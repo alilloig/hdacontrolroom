@@ -1,8 +1,7 @@
 {
-    "name" : "Sistema de telemonitorización del HDA", 
-    "description" : "Control domótico X10 mediante inferfaz web",
+    "name" : "hdacontrolroom", 
+    "description" : "Domotic X10 control through web interface",
     "keywords" : ["HDA", "X10", "WebSockets", "Accesibility"],
-    "version" : "1",
     "author" : {
         "name" : "Álvaro Lillo Igualada",
         "email" : "alilloig@gmail.com"
@@ -10,15 +9,15 @@
     "config" : {
         "foo" : "bar"
     },
-    "main" : "somename", 
-    "bin" : { "somebin" : "./app.js" }, 
-    "scripts" : { "test" : "tap test/" },
+    "main" : "server.js",
     "repository" : {
         "type" : "git",
-        "url" : "http://github.com/substack/node-optimist.git"
+        "url" : "https://github.com/alilloig/hdacontrolroom.git"
     },
     "dependencies" : { 
-        "somedep" : "~0.7.2"
+        "express" : "3.x",
+	"socket.io" : "1.x",
+	"mongoose" : "3.x"
     },
     "licenses" : [
         {
