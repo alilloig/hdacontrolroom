@@ -6,18 +6,13 @@
         "name" : "Álvaro Lillo Igualada",
         "email" : "alilloig@gmail.com"
     },
-    "config" : {
-        "foo" : "bar"
-    },
-    "main" : "server.js",
+    "main" : "app.js",
     "repository" : {
         "type" : "git",
         "url" : "https://github.com/alilloig/hdacontrolroom.git"
     },
     "dependencies" : { 
-        "express" : "3.x",
-	"socket.io" : "1.x",
-	"mongoose" : "3.x"
+        "express.io" : "1.x"
     },
     "licenses" : [
         {
