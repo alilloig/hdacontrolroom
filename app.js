@@ -1,20 +1,18 @@
-	//moduleslalalalal
-	var app = require('express.io')();
-	app.http().io();
-	// configuration ===========================================
-	var port = process.env.PORT || 8080;
-	app.configure(function() {
-		app.use(express.static(__dirname + '/public')); 	
-		//set the static files location /public/img will b /img for users
-		app.use(express.logger('dev')); // log every request to the console
-		app.use(express.bodyParser()); //pull into POST
-		app.use(express.basicAuth(‘hda’, 'hda'));
-	});
+var app = require('express.io')();
+app.http().io();
 
-	// routes ==================================================
-	require('./routes.js')//(app); // configure our routes
+var routes = require('./routes.js');
+var mochad = require('./mochad.js');
+var port = process.env.PORT || 8080;
 
-	// start app ===============================================
-	app.listen(port);// startup our app at http://localhost:8080
-	exports = module.exports = app;// expose app
+app.configure(function() {
+  app.use(express.static(__dirname + '/public'));
+  app.use(express.logger('dev')); // log every request to the console
+  app.use(express.bodyParser()); //pull into POST
+  app.use(express.basicAuth(‘hda’, 'hda'));
+});
 
+app.listen(port);// startup our app at http://localhost:8080
+
+GLOBAL.app = app;
+GLOBAL.mochad = mochad;
