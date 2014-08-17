@@ -10,17 +10,18 @@ var state = new String();
 reader.connect(tcpX10R);
 reader.setEncoding('utf8');
 
-exports.sendOn = function (code){
+exports.sendOn = function (data){
 	writer.connect(tcpX10W);
-	writer.write('pl '+code+' on\n');
-	console.log('Enviado "pl '+code+' on" por el socket '+tcpX10W);
+	writer.write('pl '+data.code+' on\n');
+	console.log('Enviado "pl '+data.code+' on" por el socket '+tcpX10W);
 	writer.end();
 };
 
-exports.sendOff = function (code){
+exports.sendOff = function (data){
+	//le pasamos la req.data asi que seguramente haya que acceder a req.data.code
 	writer.connect(tcpX10W);
-	writer.write('pl '+code+' off\n');
-	console.log('Enviado "pl '+code+' off" por el socket '+tcpX10W);
+	writer.write('pl '+data.code+' off\n');
+	console.log('Enviado "pl '+data.code+' off" por el socket '+tcpX10W);
 	writer.end();
 };
 

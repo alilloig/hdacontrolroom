@@ -4,16 +4,16 @@ var devices = require('./resources/devices.js');
 app.io.route('device', {
 	turnOn: function(req) {
 		console.log('Enviando el comando para encender el dispositivo '+code);
-		mochad.turnOn(req.data);
+		mochad.sendOn(req.data);
 	},
 	turnOff: function(req){
 		console.log('Enviando el comando para apagar el dispositivo '+code);
-		mochad.turnOff(req.data);
+		mochad.sendOff(req.data);
 	},
-	checkStatus: function(req) {
-		devices.checkStatus(req);
+	startSystem: function(req) {
+		devices.checkStatus();
 	},
 	startListening: function(req){
-		mochad.readInput(req.io);//le pasamos la conexion con el websocket forzando a tope
+		mochad.readInput();
 	}
 });
