@@ -6,7 +6,11 @@ $(window).load(function(){
 	socket.emit('startListening');
 });
 
-socket.on('turnOn', function(){
-
-
+socket.on('turnOn', function(data){
+	//llamar a la funcion de animacion ON de data.code
 });
+
+socket.on('turnOff', function(data){
+	//data.code
+});
+
