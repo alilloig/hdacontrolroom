@@ -37,21 +37,74 @@ function apagar (code){
 }
 
 function encenderLR(){
+	devices['lamparaRoja'].state = true;
+	if ($('#lamparaRoja').is(":visible")){
+		//animacion
+	}
 }
 
 function apagarLR(){
+	devices['lamparaRoja'].state = false;
+	if ($('#lamparaRoja').is(":visible")){
+		//animacion
+	}
 }
 
 function encenderLP(){
+	devices['lamparaPie'].state = true;
+	if ($('#lamparaPie').is(":visible")){
+		//animacion
+	}
 }
 
 function apagarLP(){
+	devices['lamparaPie'].state = false;
+	if ($('#lamparaPie').is(":visible")){
+		//animacion
+	}
 }
 
 function subirPersiana(){
+	devices['persiana'].state = true;
+	if ($('#persiana').is(":visible")){
+		//animacion
+	}
 }
 
 function bajarPersiana(){
+	devices['persiana'].state = false;
+	if ($('#persiana').is(":visible")){
+		//animacion
+	}
+}
+///Funciones asignadas al click en los elementos o en el plano
+
+function cambiarEstadoLamparaRoja(){
+	if (devices['lamparaRoja'].state){//la lampara esta true, encendida, por lo que
+		socket.emit('turnOff',{code: devices['lamparaRoja'].code});//enviamos mensaje para apagarla
+	}else{//si no, es que esta false y enviamos mensaje para encender
+		socket.emit('turnOn',{code: devices['lamparaRoja'].code});
+	}
+}
+
+
+
+
+
+function cambiarEstadoLamparaPie(){
+	if (devices['lamparaPie'].state){//la lampara esta true, encendida, por lo que
+		socket.emit('turnOff',{code:devices['lamparaPie'].code});//enviamos mensaje para apgarla
+	}else{//si no, es que esta false y enviamos mensaje para encender	
+		socket.emit('turnOn',{code:devices['lamparaPie'].code});
+	}
+}
+
+function cambiarEstadoPersiana(){
+	if (devices['persiana'].state){//la persiana esta true, subida, por lo que
+		socket.emit('turnOff',{code:devices['persiana'].code});//enviamos mensaje para bajarla
+	}else{//si no, es que esta false y enviamos mensaje para subir
+		socket.emit('turnOn',{code:devices['persiana'].code});
+	}
 }
 
 function controlarLamparaRoja(){

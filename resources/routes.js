@@ -1,5 +1,5 @@
-var mochad = require('./resources/mochad.js');
-var devices = require('./resources/devices.js');
+var mochad = require('./mochad.js');
+var devices = require('./devices.js');
 
 app.io.route('device', {
 	turnOn: function(req) {
