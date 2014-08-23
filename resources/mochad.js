@@ -49,5 +49,5 @@ exports.readInput = function(){
         }
       }
     }
-  }
+  });
 };
