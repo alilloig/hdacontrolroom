@@ -8,6 +8,10 @@ app.configure(function() {
   app.use(express.basicAuth(‘hda’, 'hda'));
 });
 
+app.get('/', function (req,res){
+	res.sendfile(__dirname + '/index.html');
+});
+
 app.listen(8080);// startup our app at http://localhost:8080
 
 GLOBAL.app = app;
