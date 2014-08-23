@@ -12,8 +12,6 @@ app.io.route('device', {
 	},
 	startSystem: function(req) {
 		devices.checkStatus();
-	},
-	startListening: function(req){
 		mochad.readInput();
 	}
 });
