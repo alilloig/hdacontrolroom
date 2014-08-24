@@ -1,5 +1,5 @@
-var express = require('express.io')();
-var app = express().http().io();
+express = require('express.io');
+app = express().http().io();
 
 app.configure(function() {
   app.use(express.static(__dirname + '/public'));
