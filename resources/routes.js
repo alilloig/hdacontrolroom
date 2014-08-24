@@ -12,7 +12,7 @@ app.io.route('turnOff', function(req) {
 });
 
 app.io.route('startSystem', function(req) {
+	console.log("Recibido evento iniciador del sistema");
 	devices.checkStatus();
 	mochad.readInput();
-	console.log("Recibido evento iniciador del sistema");
 });
