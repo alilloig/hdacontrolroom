@@ -28,6 +28,7 @@ function encender (code){
 		devices['lamparaRoja'].state = true;
 		if ($('#lamparaRoja').is(":visible")){
 			cont = 0;
+			ctx=$('#lamparaRoja')[0].getContext('2d');
 			encenderLamparaRoja();
 		}	
 	}else if (code == devices['lamparaPie'].code){
@@ -39,6 +40,7 @@ function encender (code){
 		devices['persiana'].state = true;
 		if ($('#persiana').is(":visible")){
 			cont = 25;
+			ctx=$('#persiana')[0].getContext('2d');
 			subirPersiana();
 		}	
 	}
@@ -50,6 +52,7 @@ function apagar (code){
 		devices['lamparaRoja'].state=false;
 		if ($('#lamparaRoja').is(':visible')){
 			cont = 8;
+			ctx=$('#lamparaRoja')[0].getContext('2d');
 			apagarLamparaRoja();
 		}
 	}else if (code == devices['lamparaPie'].code){
@@ -61,6 +64,7 @@ function apagar (code){
 		devices['persiana'].state=false;
 		if ($('#persiana').is(':visible')){
 			cont = 0;
+			ctx=$('#persiana')[0].getContext('2d');
 			bajarPersiana();
 		}
 	}
