@@ -8,7 +8,7 @@ exports.turnItOn = function (code){
 		if(list[i].code == code.toLowerCase()){
 			app.io.broadcast('turnOn',{code:list[i].code});
 			list[i].status = true;
-			console.log('Cambiado el dispositivo '+list[i].tag+' con codigo X10 '+list[i].code+' a estado '+list[i].status);
+			console.log('Cambiado el dispositivo '+list[i].label+' con codigo X10 '+list[i].code+' a estado '+list[i].status);
 		}
 	}
 };
@@ -19,7 +19,7 @@ exports.turnItOff = function (code){
 		if(list[i].code == code.toLowerCase()){
 			app.io.broadcast('turnOff',{code:list[i].code});
 			list[i].status = false;
-			console.log('Cambiado el dispositivo '+list[i].tag+' con codigo X10 '+list[i].code+' a estado '+list[i].status);
+			console.log('Cambiado el dispositivo '+list[i].label+' con codigo X10 '+list[i].code+' a estado '+list[i].status);
 		}
 	}
 };
