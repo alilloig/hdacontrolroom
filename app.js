@@ -13,4 +13,8 @@ app.get('/', function (req,res){
 	res.sendfile(__dirname + '/index.html');
 });
 
+app.io.route('startSystem', function(req) {
+	console.log("Recibido evento iniciador del sistema");
+});
+
 GLOBAL.app = app;
