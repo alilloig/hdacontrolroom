@@ -7,7 +7,7 @@ app.configure(function() {
   app.use(express.bodyParser()); //pull into POST
 });
 
-app.listen(8080);// startup our app at http://localhost:8080
+app.listen(80);// startup our app at http://localhost:80
 
 app.get('/', function (req,res){
 	res.sendfile(__dirname + '/index.html');
