@@ -1,4 +1,4 @@
-var socket = io.connect(localhost);
+var socket = io.connect(192.168.75.129);
 var devices = {lamparaRoja : {code:'a1', state:false}, lamparaPie : {code:'a2', state:false}, persiana : {code:'a3', state:false}};
 var img = new Image();
 var ctx, cont;
