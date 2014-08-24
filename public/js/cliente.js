@@ -28,18 +28,22 @@ socket.on('turnOff',function(data){
 function encender (code){
 	if (code == devices['lamparaRoja'].code){
 		devices['lamparaRoja'].state = true;
+		console.log("Guardado lamparaRoja como encendida");
 		if ($('#lamparaRoja').is(":visible")){
 			cont = 0;
 			ctx=$('#lamparaRoja')[0].getContext('2d');
+			console.log("Ejecutando la animacion de lamparaRoja");
 			encenderLamparaRoja();
 		}	
 	}else if (code == devices['lamparaPie'].code){
 		devices['lamparaPie'].state = true;
+		console.log("Guardado lamparaPie como encendida");
 		if ($('#lamparaPie').is(":visible")){
 			encenderLamparPie();
 		}	
 	}else if (code == devices['persiana'].code){
 		devices['persiana'].state = true;
+		console.log("Guardado persiana como encendida");
 		if ($('#persiana').is(":visible")){
 			cont = 25;
 			ctx=$('#persiana')[0].getContext('2d');
@@ -52,6 +56,7 @@ function encender (code){
 function apagar (code){
 	if (code == devices['lamparaRoja'].code){
 		devices['lamparaRoja'].state=false;
+		console.log("Guardada lamparaRoja como apagada");
 		if ($('#lamparaRoja').is(':visible')){
 			cont = 8;
 			ctx=$('#lamparaRoja')[0].getContext('2d');
@@ -59,11 +64,13 @@ function apagar (code){
 		}
 	}else if (code == devices['lamparaPie'].code){
 		devices['lamparaPie'].state=false;
+		console.log("Guardada lamparaPie como apagada");
 		if ($('#lamparaPie').is(':visible')){
 			apagarLamparaPie();
 		}
 	}else if (code == devices['persiana'].code){
 		devices['persiana'].state=false;
+		console.log("Guardada persiana como apagada");
 		if ($('#persiana').is(':visible')){
 			cont = 0;
 			ctx=$('#persiana')[0].getContext('2d');
