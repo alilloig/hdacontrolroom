@@ -5,7 +5,7 @@ var list = [{label:'lamparaRoja',code:'a9',status:false},
 exports.turnItOn = function (code){
 	console.log("Encendiendo dispositivo: "+code);
 	for (var i=0;i<list.length;i++){
-		if(list[i].code == code){
+		if(list[i].code == code.toLowerCase()){
 			app.io.broadcast('turnOn',{code:list[i].code});
 			list[i].status = true;
 			console.log('Cambiado el dispositivo '+list[i].tag+' con codigo X10 '+list[i].code+' a estado '+list[i].status);
@@ -16,7 +16,7 @@ exports.turnItOn = function (code){
 exports.turnItOff = function (code){
 	console.log("Apagando dispositivo: "+code);
 	for (var i=0;i<list.length;i++){
-		if(list[i].code == code){
+		if(list[i].code == code.toLowerCase()){
 			app.io.broadcast('turnOff',{code:list[i].code});
 			list[i].status = false;
 			console.log('Cambiado el dispositivo '+list[i].tag+' con codigo X10 '+list[i].code+' a estado '+list[i].status);

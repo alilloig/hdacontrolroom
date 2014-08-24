@@ -41,11 +41,11 @@ exports.readInput = function(){
     if (data.search('Tx') != -1){//
       if (data.search('Func') != -1){
         if (data.search('On')!= -1){
-	  		devices.turnItOn(houseUnit);
-			console.log("Llamada a encender el device");
+					console.log("Llamada a encender el device");
+	  			devices.turnItOn(houseUnit);
         }else if (data.search('Off')!= -1){
-			devices.turnItOff(houseUnit);	
-	    	console.log("Llamada a apagar el device");
+	    		console.log("Llamada a apagar el device");
+					devices.turnItOff(houseUnit);	
         }
       }
     }

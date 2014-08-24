@@ -1,5 +1,5 @@
 var socket = io.connect("http://192.168.75.129:80");
-var devices = {lamparaRoja : {code:'a1', state:false}, lamparaPie : {code:'a2', state:false}, persiana : {code:'a3', state:false}};
+var devices = {lamparaRoja : {code:'a9', state:false}, lamparaPie : {code:'a2', state:false}, persiana : {code:'a3', state:false}};
 var img = new Image();
 var ctx, cont;
 

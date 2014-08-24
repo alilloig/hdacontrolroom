@@ -11,7 +11,8 @@ app.configure(function() {
 });
 
 app.listen(80);// startup our app at http://localhost:80
-console.log("App escuchando en el puerto 80");
+mochad.readInput();
+console.log("App escuchando en el puerto 80 y leyendo del mochad");
 
 app.get('/', function (req,res){
 	res.sendfile(__dirname + '/index.html');
@@ -29,6 +30,5 @@ app.io.route('turnOff', function(req) {
 
 app.io.route('startSystem', function(req) {
 	devices.checkStatus();
-	mochad.readInput();
-	console.log("Recibido evento iniciador del sistema y llamado a checkStatus y readInput");
+	console.log("Recibido evento iniciador del sistema");
 });
