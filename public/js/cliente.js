@@ -12,6 +12,49 @@ $(document).ready(function(){
 	console.log("startSystem emitido");
 });
 
+//Funciones asignadas al click en los elementos o en el plano
+$("#areaComedor").click(function() {
+	console.log("click click");
+  	$('#salon').hide();
+	$('#comedor').show();
+	cargarLamparaPie();
+	cargarPersiana();
+});
+
+$("#areaSalon").click(function() {
+  	$('#comedor').hide();
+	$('#salon').show();
+	cargarLamparaRoja();
+});
+
+$('#persiana').click(function(){
+	if (devices['persiana'].state){//la persiana esta true, subida, por lo que
+		socket.emit('turnOff',{code:devices['persiana'].code});//enviamos mensaje para bajarla
+		console.log("Emitido turnOff a: "+devices['persiana'].code);
+	}else{//si no, es que esta false y enviamos mensaje para subir
+		socket.emit('turnOn',{code:devices['persiana'].code});
+		console.log("Emitido turnOn a: "+devices['persiana'].code);
+	}
+});
+$('#lamparaPie').click(function(){
+	if (devices['lamparaPie'].state){//la lampara esta true, encendida, por lo que
+		socket.emit('turnOff',{code:devices['lamparaPie'].code});//enviamos mensaje para apgarla
+		console.log("Emitido turnOff a: "+devices['lamparaPie'].code);
+	}else{//si no, es que esta false y enviamos mensaje para encender	
+		socket.emit('turnOn',{code:devices['lamparaPie'].code});
+		console.log("Emitido turnOn a: "+devices['lamparaPie'].code);
+	}
+});
+$('#lamparaRoja').click(function(){
+	if (devices['lamparaRoja'].state){//la lampara esta true, encendida, por lo que
+		socket.emit('turnOff',{code: devices['lamparaRoja'].code});//enviamos mensaje para apagarla
+		console.log("Emitido turnOff a: "+devices['lamparaRoja'].code);
+	}else{//si no, es que esta false y enviamos mensaje para encender
+		socket.emit('turnOn',{code: devices['lamparaRoja'].code});
+		console.log("Emitido turnOn a: "+devices['lamparaRoja'].code);
+	}
+});
+
 //Al recibir un evento turnOn llamamos a la funcion de encender pasandole el codigo de dispositivo
 socket.on('turnOn',function(data){
 	console.log("Encendiendo el dispositivo: "+data.code);
@@ -80,6 +123,35 @@ function apagar (code){
 }
 
 //Funciones para hacer las animaciones
+function cargarLamparaRoja(){
+	if (devices['lamparaRoja'].status){
+		img.src = './img/animaciones/lamparaRoja/8.png';
+	}else{
+		img.src = './img/animaciones/lamparaRoja/0.png';
+	}
+	ctx = $('#lamparaRoja')[0].getContext('2d');
+	ctx.drawImage(img,0,0);
+}
+
+function cargarLamparaPie(){
+	if (devices['lamparaPie'].status){
+		img.src = './img/animaciones/lamparaPie/1.png';
+	}else{
+		img.src = './img/animaciones/lamparaPie/0.png';
+	}
+	ctx = $('#lamparaPie')[0].getContext('2d');
+	ctx.drawImage(img,0,0);
+}
+
+function cargarPersiana(){
+	if (devices['persiana'].status){
+		img.src = './img/animaciones/persiana/0.png';
+	}else{
+		img.src = './img/animaciones/persiana/25.png';
+	}
+	ctx = $('#persiana')[0].getContext('2d');
+	ctx.drawImage(img,0,0);
+}
 
 function encenderLamparaRoja(){
 	if (cont<8){
@@ -127,69 +199,4 @@ function bajarPersiana(){
 		ctx.drawImage(img,0,0);
 		setTimeout(bajarPersiana, 133);
 	}
-}
-
-///Funciones asignadas al click en los elementos o en el plano
-
-function cambiarEstadoLamparaRoja(){
-	if (devices['lamparaRoja'].state){//la lampara esta true, encendida, por lo que
-		socket.emit('turnOff',{code: devices['lamparaRoja'].code});//enviamos mensaje para apagarla
-	}else{//si no, es que esta false y enviamos mensaje para encender
-		socket.emit('turnOn',{code: devices['lamparaRoja'].code});
-	}
-}
-
-function cambiarEstadoLamparaPie(){
-	if (devices['lamparaPie'].state){//la lampara esta true, encendida, por lo que
-		socket.emit('turnOff',{code:devices['lamparaPie'].code});//enviamos mensaje para apgarla
-	}else{//si no, es que esta false y enviamos mensaje para encender	
-		socket.emit('turnOn',{code:devices['lamparaPie'].code});
-	}
-}
-
-function cambiarEstadoPersiana(){
-	if (devices['persiana'].state){//la persiana esta true, subida, por lo que
-		socket.emit('turnOff',{code:devices['persiana'].code});//enviamos mensaje para bajarla
-	}else{//si no, es que esta false y enviamos mensaje para subir
-		socket.emit('turnOn',{code:devices['persiana'].code});
-	}
-}
-
-function cargarLamparaRoja(){
-	if (devices['lamparaRoja'].status){
-		img.src = './img/animaciones/lamparaRoja/8.png';
-	}else{
-		img.src = './img/animaciones/lamparaRoja/0.png';
-	}
-	ctx = $('#lamparaRoja')[0].getContext('2d');
-	$('#lamparaPie').hide();
-	$('#persiana').hide();
-	$('#lamparaRoja').show();
-	ctx.drawImage(img,0,0);
-}
-
-function cargarLamparaPie(){
-	if (devices['lamparaPie'].status){
-		img.src = './img/animaciones/lamparaPie/1.png';
-	}else{
-		img.src = './img/animaciones/lamparaPie/0.png';
-	}
-	ctx = $('#lamparaPie')[0].getContext('2d');
-	$('#persiana').hide();
-	$('#lamparaRoja').hide();
-	$('#lamparaPie').show();
-	ctx.drawImage(img,0,0);
-}
-
-function cargarPersiana(){
-	if (devices['persiana'].status){
-		img.src = './img/animaciones/persiana/0.png';
-	}else{
-		img.src = './img/animaciones/persiana/25.png';
-	}
-	ctx = $('#persiana')[0].getContext('2d');
-	$('#lamparaPie').hide();
-	$('#lamparaRoja').hide();
-	$('#persiana').show();
-	ctx.drawImage(img,0,0);
 }
