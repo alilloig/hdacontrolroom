@@ -1,4 +1,4 @@
-var socket = io.connect(localhost:8080);
+var socket = io.connect(localhost:80);
 var devices = {lamparaRoja : {code:'a1', state:false}, lamparaPie : {code:'a2', state:false}, persiana : {code:'a3', state:false}};
 var img = new Image();
 var ctx, cont;
@@ -9,6 +9,7 @@ var ctx, cont;
 //y con uno de turn off por cada dispositivo que estuviese apagado al conectarnos
 $(document).ready(function(){
 	socket.emit('startSystem');
+	console.log("startSystem emitido");
 });
 
 //Al recibir un evento turnOn llamamos a la funcion de encender pasandole el codigo de dispositivo
