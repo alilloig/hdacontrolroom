@@ -1,7 +1,7 @@
 var net = require('net');
 var devices = require('./devices.js');
-var tcpX10R = 1101;
-var tcpX10W = 1099;
+var tcpX10R = 1099;
+var tcpX10W = 1101;
 var writer = new net.Socket();
 var reader = new net.Socket();
 var houseUnit = new String();
