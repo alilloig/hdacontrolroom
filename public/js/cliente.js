@@ -2,7 +2,6 @@ var socket = io.connect("http://192.168.75.129:80");
 var devices = {lamparaRoja : {code:'a9', state:false}, lamparaPie : {code:'a2', state:false}, persiana : {code:'a3', state:false}};
 var img = new Image();
 var ctx, cont;
-
 //En cuanto tenemos cargado el arbol DOM mandamos un evento que leera el estado de los dispositivos
 //y pondra el servidor a escuchar al mochad
 //el servidor nos respondera con un mensaje de turnOn por cada dispositivo encendido
@@ -10,22 +9,23 @@ var ctx, cont;
 $(document).ready(function(){
 	socket.emit('startSystem');
 	console.log("startSystem emitido");
+	console.log(devices);
 });
 
 //Funciones asignadas al click en los elementos o en el plano
-$("#areaComedor").click(function() {
+function mostrarComedor(){
 	console.log("click click");
   	$('#salon').hide();
 	$('#comedor').show();
 	cargarLamparaPie();
 	cargarPersiana();
-});
+}
 
-$("#areaSalon").click(function() {
+function mostrarSalon(){
   	$('#comedor').hide();
 	$('#salon').show();
 	cargarLamparaRoja();
-});
+}
 
 $('#persiana').click(function(){
 	if (devices['persiana'].state){//la persiana esta true, subida, por lo que
@@ -124,7 +124,7 @@ function apagar (code){
 
 //Funciones para hacer las animaciones
 function cargarLamparaRoja(){
-	if (devices['lamparaRoja'].status){
+	if (devices['lamparaRoja'].state){
 		img.src = './img/animaciones/lamparaRoja/8.png';
 	}else{
 		img.src = './img/animaciones/lamparaRoja/0.png';
@@ -133,8 +133,8 @@ function cargarLamparaRoja(){
 	ctx.drawImage(img,0,0);
 }
 
-function cargarLamparaPie(){
-	if (devices['lamparaPie'].status){
+function cargarLamparaPie(devices){
+	if (devices['lamparaPie'].state){
 		img.src = './img/animaciones/lamparaPie/1.png';
 	}else{
 		img.src = './img/animaciones/lamparaPie/0.png';
@@ -144,7 +144,7 @@ function cargarLamparaPie(){
 }
 
 function cargarPersiana(){
-	if (devices['persiana'].status){
+	if (devices['persiana'].state){
 		img.src = './img/animaciones/persiana/0.png';
 	}else{
 		img.src = './img/animaciones/persiana/25.png';
