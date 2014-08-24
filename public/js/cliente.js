@@ -37,20 +37,20 @@ $('#persiana').click(function(){
 });
 $('#lamparaPie').click(function(){
 	if (this.devices['lamparaPie'].state){//la lampara esta true, encendida, por lo que
-		socket.emit('turnOff',{code:devices['lamparaPie'].code});//enviamos mensaje para apgarla
-		console.log("Emitido turnOff a: "+devices['lamparaPie'].code);
+		socket.emit('turnOff',{code:this.devices['lamparaPie'].code});//enviamos mensaje para apgarla
+		console.log("Emitido turnOff a: "+this.devices['lamparaPie'].code);
 	}else{//si no, es que esta false y enviamos mensaje para encender	
-		socket.emit('turnOn',{code:devices['lamparaPie'].code});
-		console.log("Emitido turnOn a: "+devices['lamparaPie'].code);
+		socket.emit('turnOn',{code:this.devices['lamparaPie'].code});
+		console.log("Emitido turnOn a: "+this.devices['lamparaPie'].code);
 	}
 });
 $('#lamparaRoja').click(function(){
 	if (this.devices['lamparaRoja'].state){//la lampara esta true, encendida, por lo que
-		socket.emit('turnOff',{code: devices['lamparaRoja'].code});//enviamos mensaje para apagarla
-		console.log("Emitido turnOff a: "+devices['lamparaRoja'].code);
+		socket.emit('turnOff',{code: this.devices['lamparaRoja'].code});//enviamos mensaje para apagarla
+		console.log("Emitido turnOff a: "+this.devices['lamparaRoja'].code);
 	}else{//si no, es que esta false y enviamos mensaje para encender
-		socket.emit('turnOn',{code: devices['lamparaRoja'].code});
-		console.log("Emitido turnOn a: "+devices['lamparaRoja'].code);
+		socket.emit('turnOn',{code: this.devices['lamparaRoja'].code});
+		console.log("Emitido turnOn a: "+this.devices['lamparaRoja'].code);
 	}
 });
 
@@ -68,8 +68,8 @@ socket.on('turnOff',function(data){
 //En la funcion encender, dependiendo del codigo recibido guardamos el nuevo estado del dispositivo
 //y si es el que se esta mostrando en este momento, llamamos a su animacion de encendido
 function encender (code){
-	if (code == devices['lamparaRoja'].code){
-		devices['lamparaRoja'].state = true;
+	if (code == this.devices['lamparaRoja'].code){
+		this.devices['lamparaRoja'].state = true;
 		console.log("Guardado lamparaRoja como encendida");
 		if ($('#lamparaRoja').is(":visible")){
 			cont = 0;
@@ -77,14 +77,14 @@ function encender (code){
 			console.log("Ejecutando la animacion de lamparaRoja");
 			encenderLamparaRoja();
 		}	
-	}else if (code == devices['lamparaPie'].code){
-		devices['lamparaPie'].state = true;
+	}else if (code == this.devices['lamparaPie'].code){
+		this.devices['lamparaPie'].state = true;
 		console.log("Guardado lamparaPie como encendida");
 		if ($('#lamparaPie').is(":visible")){
 			encenderLamparPie();
 		}	
-	}else if (code == devices['persiana'].code){
-		devices['persiana'].state = true;
+	}else if (code == this.devices['persiana'].code){
+		this.devices['persiana'].state = true;
 		console.log("Guardado persiana como encendida");
 		if ($('#persiana').is(":visible")){
 			cont = 25;
@@ -96,22 +96,22 @@ function encender (code){
 
 //El proceso para "apagar" un dispositivo es analogo al de encendido
 function apagar (code){
-	if (code == devices['lamparaRoja'].code){
-		devices['lamparaRoja'].state=false;
+	if (code == this.devices['lamparaRoja'].code){
+		this.devices['lamparaRoja'].state=false;
 		console.log("Guardada lamparaRoja como apagada");
 		if ($('#lamparaRoja').is(':visible')){
 			cont = 8;
 			ctx=$('#lamparaRoja')[0].getContext('2d');
 			apagarLamparaRoja();
 		}
-	}else if (code == devices['lamparaPie'].code){
-		devices['lamparaPie'].state=false;
+	}else if (code == this.devices['lamparaPie'].code){
+		this.devices['lamparaPie'].state=false;
 		console.log("Guardada lamparaPie como apagada");
 		if ($('#lamparaPie').is(':visible')){
 			apagarLamparaPie();
 		}
-	}else if (code == devices['persiana'].code){
-		devices['persiana'].state=false;
+	}else if (code == this.devices['persiana'].code){
+		this.devices['persiana'].state=false;
 		console.log("Guardada persiana como apagada");
 		if ($('#persiana').is(':visible')){
 			cont = 0;
@@ -132,8 +132,8 @@ function cargarLamparaRoja(){
 	ctx.drawImage(img,0,0);
 }
 
-function cargarLamparaPie(devices){
-	if (devices['lamparaPie'].state){
+function cargarLamparaPie(this.devices){
+	if (this.devices['lamparaPie'].state){
 		img.src = './img/animaciones/lamparaPie/1.png';
 	}else{
 		img.src = './img/animaciones/lamparaPie/0.png';
@@ -143,7 +143,7 @@ function cargarLamparaPie(devices){
 }
 
 function cargarPersiana(){
-	if (devices['persiana'].state){
+	if (this.devices['persiana'].state){
 		img.src = './img/animaciones/persiana/0.png';
 	}else{
 		img.src = './img/animaciones/persiana/25.png';
