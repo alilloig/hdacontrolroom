@@ -132,7 +132,7 @@ function cargarLamparaRoja(){
 	ctx.drawImage(img,0,0);
 }
 
-function cargarLamparaPie(this.devices){
+function cargarLamparaPie(){
 	if (this.devices['lamparaPie'].state){
 		img.src = './img/animaciones/lamparaPie/1.png';
 	}else{
