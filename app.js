@@ -11,6 +11,7 @@ app.configure(function() {
 });
 
 app.listen(80);// startup our app at http://localhost:80
+console.log("App escuchando en el puerto 80");
 
 app.get('/', function (req,res){
 	res.sendfile(__dirname + '/index.html');
