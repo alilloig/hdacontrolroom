@@ -9,7 +9,6 @@ var ctx, cont;
 $(document).ready(function(){
 	socket.emit('startSystem');
 	console.log("startSystem emitido");
-	console.log(devices);
 });
 
 //Funciones asignadas al click en los elementos o en el plano
@@ -28,16 +27,16 @@ function mostrarSalon(){
 }
 
 $('#persiana').click(function(){
-	if (devices['persiana'].state){//la persiana esta true, subida, por lo que
-		socket.emit('turnOff',{code:devices['persiana'].code});//enviamos mensaje para bajarla
-		console.log("Emitido turnOff a: "+devices['persiana'].code);
+	if (this.devices['persiana'].state){//la persiana esta true, subida, por lo que
+		socket.emit('turnOff',{code:this.devices['persiana'].code});//enviamos mensaje para bajarla
+		console.log("Emitido turnOff a: "+this.devices['persiana'].code);
 	}else{//si no, es que esta false y enviamos mensaje para subir
-		socket.emit('turnOn',{code:devices['persiana'].code});
-		console.log("Emitido turnOn a: "+devices['persiana'].code);
+		socket.emit('turnOn',{code:this.devices['persiana'].code});
+		console.log("Emitido turnOn a: "+this.devices['persiana'].code);
 	}
 });
 $('#lamparaPie').click(function(){
-	if (devices['lamparaPie'].state){//la lampara esta true, encendida, por lo que
+	if (this.devices['lamparaPie'].state){//la lampara esta true, encendida, por lo que
 		socket.emit('turnOff',{code:devices['lamparaPie'].code});//enviamos mensaje para apgarla
 		console.log("Emitido turnOff a: "+devices['lamparaPie'].code);
 	}else{//si no, es que esta false y enviamos mensaje para encender	
@@ -46,7 +45,7 @@ $('#lamparaPie').click(function(){
 	}
 });
 $('#lamparaRoja').click(function(){
-	if (devices['lamparaRoja'].state){//la lampara esta true, encendida, por lo que
+	if (this.devices['lamparaRoja'].state){//la lampara esta true, encendida, por lo que
 		socket.emit('turnOff',{code: devices['lamparaRoja'].code});//enviamos mensaje para apagarla
 		console.log("Emitido turnOff a: "+devices['lamparaRoja'].code);
 	}else{//si no, es que esta false y enviamos mensaje para encender
@@ -124,7 +123,7 @@ function apagar (code){
 
 //Funciones para hacer las animaciones
 function cargarLamparaRoja(){
-	if (devices['lamparaRoja'].state){
+	if (this.devices['lamparaRoja'].state){
 		img.src = './img/animaciones/lamparaRoja/8.png';
 	}else{
 		img.src = './img/animaciones/lamparaRoja/0.png';
