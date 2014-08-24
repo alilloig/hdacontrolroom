@@ -15,10 +15,12 @@ $(document).ready(function(){
 //Al recibir un evento turnOn llamamos a la funcion de encender pasandole el codigo de dispositivo
 socket.on('turnOn',function(data){
 	encender(data.code);
+	console.log("Encendiendo el dispositivo: "+data.code);
 });
 //Y hacemos lo equivalente al recibir un evento turnOff
 socket.on('turnOff',function(data){
 	apagar(data.code);
+	console.log("Apagando el dispositivo: "+data.code);
 });
 
 //En la funcion encender, dependiendo del codigo recibido guardamos el nuevo estado del dispositivo
