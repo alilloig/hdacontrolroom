@@ -128,6 +128,8 @@ function cargarLamparaRoja(){
 	}else{
 		img.src = './img/animaciones/lamparaRoja/0.png';
 	}
+	img.style.height = '100px';
+    img.style.width = '200px';
 	ctx = $('#lamparaRoja')[0].getContext('2d');
 	ctx.drawImage(img,0,0);
 }
