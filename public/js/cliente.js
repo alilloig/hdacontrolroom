@@ -20,6 +20,31 @@ $(document).ready(function(){
 	document.getElementById("persiana").addEventListener("click", clickPersiana);
 	document.getElementById("lamparaPie").addEventListener("click", clickLamparaPie);
 	document.getElementById("lamparaRoja").addEventListener("click", clickLamparaRoja);
+	$('#areaComedor').keypress(function(e) {
+		if (e.which == '13') {
+			$('#areaComedor').click();
+		}
+	});
+	$('#areaSalon').keypress(function(e) {
+		if (e.which == '13') {
+			$('#areaSalon').click();
+		}
+	});
+	$('#lamparaRoja').keypress(function(e) {
+		if (e.which == '13') {
+			$('#lamparaRoja').click();
+		}
+	});
+		$('#lamparaPie').keypress(function(e) {
+		if (e.which == '13') {
+			$('#lamparaPie').click();
+		}
+	});
+		$('#persiana').keypress(function(e) {
+		if (e.which == '13') {
+			$('#persiana').click();
+		}
+	});
 });
 
 //Funciones asignadas al click en los elementos o en el plano
@@ -29,9 +54,9 @@ function mostrarComedor(){
 	$('#comedor').show();
 	cargarLamparaPie();
 	cargarPersiana();
-	$( "#lamparaRoja" ).removeAttr( "tabindex");
-	$( "#persiana" ).attr( "tabindex", "3" );
-	$( "#lamparaPie" ).attr( "tabindex", "4" );
+	$("#lamparaRoja").removeAttr( "tabindex");
+	$("#persiana").attr( "tabindex", "3" );
+	$("#lamparaPie").attr( "tabindex", "4" );
 }
 function mostrarSalon(){
 	console.log("Mostrando salon en el controlador");
