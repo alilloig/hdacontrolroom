@@ -24,17 +24,23 @@ $(document).ready(function(){
 
 //Funciones asignadas al click en los elementos o en el plano
 function mostrarComedor(){
-	console.log("Mostrando salon en el controlador");
-  	cargarLamparaPie();
-	cargarPersiana();
+	console.log("Mostrando comedor en el controlador");
 	$('#salon').hide();
 	$('#comedor').show();
+	cargarLamparaPie();
+	cargarPersiana();
+	$( "#persiana" ).attr( "tabindex", "3" );
+	$( "#lamparaPie" ).attr( "tabindex", "4" );
+	$( "#lamparaRoja" ).removeAttr( "tabindex");
 }
 function mostrarSalon(){
-	console.log("Mostrando comedor en el controlador");
-  	cargarLamparaRoja();
+	console.log("Mostrando salon en el controlador");
 	$('#comedor').hide();
 	$('#salon').show();
+	cargarLamparaRoja();
+	$( "#lamparaRoja" ).attr( "tabindex", "3" );
+	$( "#lamparaPie" ).removeAttr( "tabindex");
+	$( "#periana" ).removeAttr( "tabindex");
 }
 function clickPersiana(){
 	if (dispositivos.persiana.state){//la persiana esta true, subida, por lo que
@@ -139,7 +145,7 @@ function cargarLamparaRoja(){
 		imgLR.src = './img/animaciones/lamparaRoja/0.png';
 	}
 	ctxLR = $('#lamparaRoja')[0].getContext('2d');
-	ctxLR.drawImage(imgLR,0,0,480,322);
+	ctxLR.drawImage(imgLR,0,0,480,322);	
 }
 
 function cargarLamparaPie(){
