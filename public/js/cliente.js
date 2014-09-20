@@ -138,15 +138,8 @@ function cargarLamparaRoja(){
 	}else{
 		imgLR.src = './img/animaciones/lamparaRoja/0.png';
 	}
-<<<<<<< HEAD
-	img.style.height = '100px';
-    img.style.width = '200px';
-	ctx = $('#lamparaRoja')[0].getContext('2d');
-	ctx.drawImage(img,0,0);
-=======
 	ctxLR = $('#lamparaRoja')[0].getContext('2d');
 	ctxLR.drawImage(imgLR,0,0,480,322);
->>>>>>> origin/master
 }
 
 function cargarLamparaPie(){
