@@ -22,31 +22,33 @@ $(document).ready(function(){
 
 //Funciones asignadas al click en los elementos o en el plano
 function mostrarComedor(){
-	console.log("Mostrando salon en el controlador");
+	console.log("Mostrando comedor en el controlador");
 	$('#salon').hide();
 	$('#comedor').show();
 	cargarLamparaPie();
 	cargarPersiana();
+	$( "#lamparaRoja" ).removeAttr( "tabindex");
 	$( "#persiana" ).attr( "tabindex", "3" );
 	$( "#lamparaPie" ).attr( "tabindex", "4" );
-	$( "#lamparaRoja" ).removeAttr( "tabindex");
 }
 function mostrarSalon(){
-	console.log("Mostrando comedor en el controlador");
+	console.log("Mostrando salon en el controlador");
 	$('#comedor').hide();
 	$('#salon').show();
 	cargarLamparaRoja();
-	$( "#lamparaRoja" ).attr( "tabindex", "3" );
-	$( "#lamparaPie" ).removeAttr( "tabindex");
-	$( "#periana" ).removeAttr( "tabindex");
+	$("#lamparaPie").removeAttr("tabindex");
+	$("#persiana").removeAttr("tabindex");
+	$("#lamparaRoja").attr( "tabindex", "3" );
 }
 
 //Funciones para cargar los elementos
 function cargarLamparaRoja(){
 	if (dispositivos.lamparaRoja.state){
 		imgLR.src = './img/animaciones/lamparaRoja/8.png';
+		cont = 8;
 	}else{
 		imgLR.src = './img/animaciones/lamparaRoja/0.png';
+		cont = 0;
 	}
 	ctxLR = $('#lamparaRoja')[0].getContext('2d');
 	ctxLR.drawImage(imgLR,0,0,480,322);
@@ -55,8 +57,10 @@ function cargarLamparaRoja(){
 function cargarLamparaPie(){
 	if (dispositivos.lamparaPie.state){
 		imgLP.src = './img/animaciones/lamparaPie/1.png';
+		cont =1;
 	}else{
 		imgLP.src = './img/animaciones/lamparaPie/0.png';
+		cont =0;
 	}
 	ctxLP = $('#lamparaPie')[0].getContext('2d');
 	ctxLP.drawImage(imgLP,0,0,283,322);
@@ -65,8 +69,10 @@ function cargarLamparaPie(){
 function cargarPersiana(){
 	if (dispositivos.persiana.state){
 		imgP.src = './img/animaciones/persiana/0.png';
+		cont = 0;
 	}else{
 		imgP.src = './img/animaciones/persiana/25.png';
+		cont = 25;
 	}
 	ctxP = $('#persiana')[0].getContext('2d');
 	ctxP.drawImage(imgP,0,0,197,322);
@@ -75,22 +81,28 @@ function cargarPersiana(){
 function clickPersiana(){
 	if (dispositivos.persiana.state){//la persiana esta true, subida, 
 		bajarPersiana();
+		dispositivos.persiana.state = false;
 	}else{//si no, es que esta false 
 		subirPersiana();
+		dispositivos.persiana.state = true;
 	}
 }
 function clickLamparaPie(){
 	if (dispositivos.lamparaPie.state){//la lampara esta true, encendida,
 		apagarLamparaPie();
+		dispositivos.lamparaPie.state = false;
 	}else{//si no, es que esta false 
 		encenderLamparaPie();
+		dispositivos.lamparaPie.state = true;
 	}
 }
 function clickLamparaRoja(){
 	if (dispositivos.lamparaRoja.state){//la lampara esta true,
 		apagarLamparaRoja();
+		dispositivos.lamparaRoja.state = false;
 	}else{//si no, es que esta false y enviamos mensaje para encender
 		encenderLamparaRoja();
+		dispositivos.lamparaRoja.state = true;
 	}
 }
 

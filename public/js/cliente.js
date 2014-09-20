@@ -29,18 +29,18 @@ function mostrarComedor(){
 	$('#comedor').show();
 	cargarLamparaPie();
 	cargarPersiana();
+	$( "#lamparaRoja" ).removeAttr( "tabindex");
 	$( "#persiana" ).attr( "tabindex", "3" );
 	$( "#lamparaPie" ).attr( "tabindex", "4" );
-	$( "#lamparaRoja" ).removeAttr( "tabindex");
 }
 function mostrarSalon(){
 	console.log("Mostrando salon en el controlador");
 	$('#comedor').hide();
 	$('#salon').show();
 	cargarLamparaRoja();
-	$( "#lamparaRoja" ).attr( "tabindex", "3" );
-	$( "#lamparaPie" ).removeAttr( "tabindex");
-	$( "#periana" ).removeAttr( "tabindex");
+	$("#lamparaPie").removeAttr("tabindex");
+	$("#persiana").removeAttr("tabindex");
+	$("#lamparaRoja").attr( "tabindex", "3" );
 }
 function clickPersiana(){
 	if (dispositivos.persiana.state){//la persiana esta true, subida, por lo que
