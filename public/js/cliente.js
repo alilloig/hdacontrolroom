@@ -170,7 +170,7 @@ function cargarLamparaRoja(){
 		imgLR.src = './img/animaciones/lamparaRoja/0.png';
 	}
 	ctxLR = $('#lamparaRoja')[0].getContext('2d');
-	ctxLR.drawImage(imgLR,0,0,480,322);	
+	ctxLR.drawImage(imgLR,0,0,300,150);	
 }
 
 function cargarLamparaPie(){
@@ -180,7 +180,7 @@ function cargarLamparaPie(){
 		imgLP.src = './img/animaciones/lamparaPie/0.png';
 	}
 	ctxLP = $('#lamparaPie')[0].getContext('2d');
-	ctxLP.drawImage(imgLP,0,0,283,322);
+	ctxLP.drawImage(imgLP,0,0,300,150);
 }
 
 function cargarPersiana(){
@@ -190,14 +190,14 @@ function cargarPersiana(){
 		imgP.src = './img/animaciones/persiana/25.png';
 	}
 	ctxP = $('#persiana')[0].getContext('2d');
-	ctxP.drawImage(imgP,0,0,197,322);
+	ctxP.drawImage(imgP,0,0,300,150);
 }
 
 function encenderLamparaRoja(){
 	if (cont<8){
 		cont++;
 		imgLR.src='./img/animaciones/lamparaRoja/'+cont+'.png';
-		ctxLR.drawImage(imgLR,0,0,480,322);
+		ctxLR.drawImage(imgLR,0,0,300,150);
 		setTimeout(encenderLamparaRoja, 100);
 	}
 }
@@ -206,7 +206,7 @@ function apagarLamparaRoja(){
 	if (cont>0){
 		cont--;
 		imgLR.src='./img/animaciones/lamparaRoja/'+cont+'.png';
-		ctxLR.drawImage(imgLR,0,0,480,322);
+		ctxLR.drawImage(imgLR,0,0,300,150);
 		setTimeout(apagarLamparaRoja, 100);
 	}
 }
@@ -214,20 +214,20 @@ function apagarLamparaRoja(){
 function encenderLamparaPie(){
 	ctxLP=$('#lamparaPie')[0].getContext('2d');
 	imgLP.src='./img/animaciones/lamparaPie/1.png';
-	ctxLP.drawImage(imgLP,0,0,283,322);
+	ctxLP.drawImage(imgLP,0,0,300,150);
 }
 
 function apagarLamparaPie(){
 	ctxLP=$('#lamparaPie')[0].getContext('2d');
 	imgLP.src='./img/animaciones/lamparaPie/0.png';
-	ctxLP.drawImage(imgLP,0,0,283,322);
+	ctxLP.drawImage(imgLP,0,0,300,150);
 }
 
 function subirPersiana(){
 	if (cont>0){
 		cont--;
 		imgP.src='./img/animaciones/persiana/'+cont+'.png';
-		ctxP.drawImage(imgP,0,0,197,322);
+		ctxP.drawImage(imgP,0,0,300,150);
 		setTimeout(subirPersiana, 150);
 	}
 }
@@ -236,7 +236,7 @@ function bajarPersiana(){
 	if (cont<25){
 		cont++;
 		imgP.src='./img/animaciones/persiana/'+cont+'.png';
-		ctxP.drawImage(imgP,0,0,197,322);
+		ctxP.drawImage(imgP,0,0,300,150);
 		setTimeout(bajarPersiana, 133);
 	}
 }
