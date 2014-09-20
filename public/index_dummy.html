@@ -2,7 +2,7 @@
 <html lang="es">
 	<head tabindex="-1">	
 		<meta charset="UTF-8">
-		<title>Sala de control del Hogar Digital Accesible</title>
+		<title>HDA´s control room</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="./css/estilos.css">
 		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -20,25 +20,25 @@
 		</header>
 		<nav>
 			<ul>
-				<li><a title="Control Domótico" href="index.html" tabindex="-1">Control Domótico</a></li>
-				<li><a title="EcoHub" href="#" tabindex="-1">EcoHub</a></li>
+				<li><a title="Domotic control" href="index.html" tabindex="-1">Control Domótico</a></li>
+				<!--<li><a title="EcoHub" href="#" tabindex="-1">EcoHub</a></li>-->
 			</ul>
 		</nav>
 		<div id="wrapper">
 			<div id="controlador">
-				<div id="comedor" class="visor">
-					<canvas id="persiana"></canvas>
-					<canvas id="lamparaPie"></canvas>
+				<div id="comedor" class="visor" title="Dining room controller">
+					<canvas id="persiana" title="Blind"></canvas>
+					<canvas id="lamparaPie" title="Floor lamp"></canvas>
 				</div>
-				<div id="salon" class="visor">
-					<canvas id="lamparaRoja"></canvas>
+				<div id="salon" class="visor" title="Living room controller">
+					<canvas id="lamparaRoja" title="Red lamp"></canvas>
 				</div>
 			</div>
 			<div id="plano">
 				<div class="contenedor_plano">
-					<div class="plano"></div>
-					<div id="areaComedor" class="area" tabindex="1"></div>
-					<div id="areaSalon" class="area" tabindex="2"></div>
+					<div class="plano" title="HDA plane"></div>
+					<div id="areaComedor" class="area" tabindex="1" title="Dining room"></div>
+					<div id="areaSalon" class="area" tabindex="2" title="Living room"></div>
 				</div>
 			</div>
 		</div>
