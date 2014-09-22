@@ -1,4 +1,4 @@
-var socket = io.connect("http://192.168.75.129:80");
+var socket = io.connect("http://192.168.50.128:80");
 var dispositivos = {lamparaRoja : {code:'a3', state:false}, 
 					lamparaPie : {code:'a1', state:false}, 
 					persiana : {code:'a2', state:false}};
