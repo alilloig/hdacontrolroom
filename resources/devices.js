@@ -1,6 +1,6 @@
-var list = [{label:'lamparaRoja',code:'a9',status:false},
+var list = [{label:'lamparaRoja',code:'a3',status:false},
 						{label:'persianaSalon',code:'a2',status:false},
-						{label:'lamparaPie',code:'a3',status:false}];
+						{label:'lamparaPie',code:'a1',status:false}];
 
 exports.turnItOn = function (code){
 	console.log("Encendiendo dispositivo: "+code);

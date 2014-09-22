@@ -139,7 +139,8 @@ function encenderLamparaRoja(){
 		cont++;
 		imgLR.src='./img/animaciones/lamparaRoja/'+cont+'.png';
 		ctxLR.drawImage(imgLR,0,0,300,150);
-		setTimeout(encenderLamparaRoja, 100);
+		console.log(cont);
+		setTimeout(encenderLamparaRoja, 250);
 	}
 }
 
@@ -148,7 +149,8 @@ function apagarLamparaRoja(){
 		cont--;
 		imgLR.src='./img/animaciones/lamparaRoja/'+cont+'.png';
 		ctxLR.drawImage(imgLR,0,0,300,150);
-		setTimeout(apagarLamparaRoja, 100);
+				console.log(cont);
+		setTimeout(apagarLamparaRoja, 250);
 	}
 }
 
