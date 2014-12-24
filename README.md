@@ -1,9 +1,8 @@
-Sistema de telemonitorización del Hogar Digital Accesible
+<h1>X10 Control Room</h1>
 ==============
 
-Proyecto de fin de carrera de Telemática de la EUITT
---------------
+<h2>Manage your X10 devices in real-time using the CM15 interface</h2>
 
-*by Álvaro Lillo Igualada*
+You will need to install mochad (https://github.com/alilloig/mochad) in order to be able to comunicate with your CM15 controller
 
-http://hogardigitalaccesible.euitt.upm.es/
+
