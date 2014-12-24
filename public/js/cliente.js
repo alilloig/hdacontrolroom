@@ -1,11 +1,7 @@
-var socket = io.connect("http://192.168.50.128:80");
+var socket = io.connect("localhost:80");
 var dispositivos = {lamparaRoja : {code:'a3', state:false}, 
 					lamparaPie : {code:'a1', state:false}, 
 					persiana : {code:'a2', state:false}};
-var ctxLR, ctxLP, ctxP;
-var imgLR = new Image();
-var imgLP = new Image();
-var imgP = new Image();
 var cont;
 					
 //En cuanto tenemos cargado el arbol DOM mandamos un evento que leera el estado de los dispositivos
@@ -47,26 +43,6 @@ $(document).ready(function(){
 	});
 });
 
-//Funciones asignadas al click en los elementos o en el plano
-function mostrarComedor(){
-	console.log("Mostrando comedor en el controlador");
-	$('#salon').hide();
-	$('#comedor').show();
-	cargarLamparaPie();
-	cargarPersiana();
-	$("#lamparaRoja").removeAttr( "tabindex");
-	$("#persiana").attr( "tabindex", "3" );
-	$("#lamparaPie").attr( "tabindex", "4" );
-}
-function mostrarSalon(){
-	console.log("Mostrando salon en el controlador");
-	$('#comedor').hide();
-	$('#salon').show();
-	cargarLamparaRoja();
-	$("#lamparaPie").removeAttr("tabindex");
-	$("#persiana").removeAttr("tabindex");
-	$("#lamparaRoja").attr( "tabindex", "3" );
-}
 function clickPersiana(){
 	if (dispositivos.persiana.state){//la persiana esta true, subida, por lo que
 		socket.emit('turnOff',{code:dispositivos.persiana.code});//enviamos mensaje para bajarla
@@ -74,24 +50,6 @@ function clickPersiana(){
 	}else{//si no, es que esta false y enviamos mensaje para subir
 		socket.emit('turnOn',{code:dispositivos.persiana.code});
 		console.log("Emitido turnOn a: "+dispositivos.persiana.code);
-	}
-}
-function clickLamparaPie(){
-	if (dispositivos.lamparaPie.state){//la lampara esta true, encendida, por lo que
-		socket.emit('turnOff',{code:dispositivos.lamparaPie.code});//enviamos mensaje para apgarla
-		console.log("Emitido turnOff a: "+dispositivos.lamparaPie.code);
-	}else{//si no, es que esta false y enviamos mensaje para encender	
-		socket.emit('turnOn',{code:dispositivos.lamparaPie.code});
-		console.log("Emitido turnOn a: "+dispositivos.lamparaPie.code);
-	}
-}
-function clickLamparaRoja(){
-	if (dispositivos.lamparaRoja.state){//la lampara esta true, encendida, por lo que
-		socket.emit('turnOff',{code: dispositivos.lamparaRoja.code});//enviamos mensaje para apagarla
-		console.log("Emitido turnOff a: "+dispositivos.lamparaRoja.code);
-	}else{//si no, es que esta false y enviamos mensaje para encender
-		socket.emit('turnOn',{code: dispositivos.lamparaRoja.code});
-		console.log("Emitido turnOn a: "+dispositivos.lamparaRoja.code);
 	}
 }
 
@@ -159,84 +117,5 @@ function apagar (code){
 			ctx=$('#persiana')[0].getContext('2d');
 			bajarPersiana();
 		}
-	}
-}
-
-//Funciones para hacer las animaciones
-function cargarLamparaRoja(){
-	if (dispositivos.lamparaRoja.state){
-		imgLR.src = './img/animaciones/lamparaRoja/8.png';
-	}else{
-		imgLR.src = './img/animaciones/lamparaRoja/0.png';
-	}
-	ctxLR = $('#lamparaRoja')[0].getContext('2d');
-	ctxLR.drawImage(imgLR,0,0,300,150);	
-}
-
-function cargarLamparaPie(){
-	if (dispositivos.lamparaPie.state){
-		imgLP.src = './img/animaciones/lamparaPie/1.png';
-	}else{
-		imgLP.src = './img/animaciones/lamparaPie/0.png';
-	}
-	ctxLP = $('#lamparaPie')[0].getContext('2d');
-	ctxLP.drawImage(imgLP,0,0,300,150);
-}
-
-function cargarPersiana(){
-	if (dispositivos.persiana.state){
-		imgP.src = './img/animaciones/persiana/0.png';
-	}else{
-		imgP.src = './img/animaciones/persiana/25.png';
-	}
-	ctxP = $('#persiana')[0].getContext('2d');
-	ctxP.drawImage(imgP,0,0,300,150);
-}
-
-function encenderLamparaRoja(){
-	if (cont<8){
-		cont++;
-		imgLR.src='./img/animaciones/lamparaRoja/'+cont+'.png';
-		ctxLR.drawImage(imgLR,0,0,300,150);
-		setTimeout(encenderLamparaRoja, 100);
-	}
-}
-
-function apagarLamparaRoja(){
-	if (cont>0){
-		cont--;
-		imgLR.src='./img/animaciones/lamparaRoja/'+cont+'.png';
-		ctxLR.drawImage(imgLR,0,0,300,150);
-		setTimeout(apagarLamparaRoja, 100);
-	}
-}
-
-function encenderLamparaPie(){
-	ctxLP=$('#lamparaPie')[0].getContext('2d');
-	imgLP.src='./img/animaciones/lamparaPie/1.png';
-	ctxLP.drawImage(imgLP,0,0,300,150);
-}
-
-function apagarLamparaPie(){
-	ctxLP=$('#lamparaPie')[0].getContext('2d');
-	imgLP.src='./img/animaciones/lamparaPie/0.png';
-	ctxLP.drawImage(imgLP,0,0,300,150);
-}
-
-function subirPersiana(){
-	if (cont>0){
-		cont--;
-		imgP.src='./img/animaciones/persiana/'+cont+'.png';
-		ctxP.drawImage(imgP,0,0,300,150);
-		setTimeout(subirPersiana, 150);
-	}
-}
-
-function bajarPersiana(){
-	if (cont<25){
-		cont++;
-		imgP.src='./img/animaciones/persiana/'+cont+'.png';
-		ctxP.drawImage(imgP,0,0,300,150);
-		setTimeout(bajarPersiana, 133);
 	}
 }

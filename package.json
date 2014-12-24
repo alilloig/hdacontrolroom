@@ -1,7 +1,7 @@
 {
     "name" : "hdacontrolroom", 
     "description" : "Domotic X10 control through web interface",
-    "keywords" : ["HDA", "X10", "WebSockets", "Accesibility"],
+    "keywords" : ["X10", "RealTime"],
     "author" : {
         "name" : "Álvaro Lillo Igualada",
         "email" : "alilloig@gmail.com"
